@@ -20,9 +20,30 @@
     $app->get('/', function() use($app) {
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
-    $app->post('/stylists', function() use($app) {
+    $app->post('/', function() use($app) {
         $stylist = new Stylist(filter_var($_POST['name'], FILTER_SANITIZE_MAGIC_QUOTES));
         $stylist->save();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+    $app->get('/stylist/{id}', function($id) use ($app){
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('stylist.html.twig', array('stylist'=>$stylist));
+        // ,'clients'=>$stylist->getClients()
+    });
+    $app->get('/stylist/{id}/edit', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        return $app['twig']->render('stylist_edit.html.twig', array('stylist'=>$stylist));
+    });
+    $app->patch('/stylist/{id}', function($id) use($app) {
+        $new_name = $_POST['name'];
+        $stylist= Stylist::find($id);
+        $stylist->edit($new_name);
+        return $app['twig']->render('stylist.html.twig', array('stylist'=>$stylist));
+        // , 'clients'=>$stylist->getClients()
+    });
+    $app->delete('/{id}', function($id) use($app) {
+        $stylist = Stylist::find($id);
+        $stylist->delete();
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 

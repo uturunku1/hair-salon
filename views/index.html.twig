@@ -7,21 +7,23 @@
 
     </head>
     <body>
-        <h2>Enter a new stylist name for the hair salon:</h2>
+        <div class="container-fluid">
+            <h2>Enter a new stylist name for the hair salon:</h2>
 
-        <form action="/stylists" method="post">
-            <label for="type">Add name:</label>
-            <input type="text" name="name" required>
-            <button type="submit">Submit</button>
-        </form>
-        {%if stylists is not empty%}
-        <h4>List of stylists:</h4>
-        <ul>
-            {%for stylist in stylists%}
-                <li><a href="/stylists/{{stylist.getId}}">{{stylist.getName}}</a></li>
-            {%endfor%}
-        </ul>
-        {%endif%}
+            <form action="" method="post">
+                <label for="type">Add name:</label>
+                <input type="text" name="name" required>
+                <button type="submit">Submit</button>
+            </form>
+            {%if stylists is not empty%}
+            <h4>List of stylists:</h4>
+            <ul>
+                {%for stylist in stylists%}
+                    <li><a href="/stylist/{{stylist.getId}}">{{stylist.getName}}</a></li>
+                {%endfor%}
+            </ul>
+            {%endif%}
 
+        </div>
     </body>
 </html>
