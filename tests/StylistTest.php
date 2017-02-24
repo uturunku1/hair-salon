@@ -25,6 +25,15 @@
             $result = $stylist->getName();
             $this->assertEquals($name, $result);
         }
+        function test_getId()
+        {
+            $name= "Jason";
+            $id = 1;
+            $stylist = new Stylist($name, $id);
+
+            $result = $stylist->getId();
+            $this->assertEquals(true, is_numeric($result));
+        }
 
     }
 ?>
