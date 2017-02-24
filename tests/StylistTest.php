@@ -86,8 +86,18 @@
           $result= $stylist->getName();
           $this->assertEquals($new_name, $result);
         }
-        
+        function test_delete()
+        {
+          $name= "Jason";
+          $id = 1;
+          $stylist = new Stylist($name, $id);
+          $stylist->save();
 
+          $stylist->delete();
+
+          $result= Stylist::getAll();
+          $this->assertEquals([], $result);
+        }
 
     }
 ?>
