@@ -34,6 +34,34 @@
             $result = $stylist->getId();
             $this->assertEquals(true, is_numeric($result));
         }
+        function test_save()
+        {
+          $name= "Jason";
+          $id = 1;
+          $stylist = new Stylist($name, $id);
+          $stylist->save();
+
+          $result = Stylist::getAll();
+          $this->assertEquals($stylist, $result[0]);
+        }
+        // function test_getAll()
+        // {
+        //   $name= "Jason";
+        //   $id = 1;
+        //   $stylist = new Stylist($name,$id);
+        //   $stylist->save();
+        //
+        //   $name2= "Mike";
+        //   $id2= 2;
+        //   $stylist2 = new Stylist($name2, $id2);
+        //   $stylist2->save();
+        //
+        //   $result= Stylist::getAll();
+        //   var_dump($result);
+        //   $this->assertEquals([$stylist,$stylist2], $result);
+        //
+        // }
+
 
     }
 ?>
