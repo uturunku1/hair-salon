@@ -74,7 +74,19 @@
           $result= Stylist::find($stylist->getId());
           $this->assertEquals($stylist, $result);
         }
-      
+        function test_edit()
+        {
+          $name= "Jason";
+          $id = 1;
+          $stylist = new Stylist($name, $id);
+          $stylist->save();
+          $new_name= "Taylor";
+          $stylist->edit($new_name);
+
+          $result= $stylist->getName();
+          $this->assertEquals($new_name, $result);
+        }
+        
 
 
     }
