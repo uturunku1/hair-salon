@@ -142,5 +142,23 @@
               $result = Client::getAll();
               $this->assertEquals([$client], $result);
           }
+          function test_edit()
+          {
+              $name="Jason";
+              $id=null;
+              $stylist= new Stylist($name, $id);
+              $stylist->save();
+
+              $name="Stella";
+              $stylist_id=$stylist->getId();
+              $client= new Client($name, $id, $stylist_id);
+              $client->save();
+              $new_name= "Yoshiko";
+              $client->edit($new_name);
+
+              $result= $client->getName();
+              $this->assertEquals($new_name, $result);
+
+          }
       }
  ?>
