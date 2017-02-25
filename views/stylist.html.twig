@@ -11,12 +11,26 @@
     <h2>{{stylist.getName}}</h2> <a href="/stylist/{{stylist.getId}}/edit">Edit/remove the name of this stylist.</a>
     <p></p>
 
-    <form action="" method="post">
-      <input type="hidden" name="stylist_id" value="{{stylist.getId()}}" required>
+    <form action="/stylist/{{stylist.getId}}" method="post">
+      <input type="hidden" name="stylist_id" value="{{stylist.getId}}" required>
       <label for="name">Enter a client's name:</label>
       <input type="text" name="name" required>
       <button type="submit">Add</button>
     </form>
+
+    {% if clients is not empty %}
+        <ul>
+          {% for client in clients %}
+          <li>{{ client.getName }}
+            <form class="solo-btn" action="/stylist/{{stylist.getId}}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="client_id" value="{{client.getId}}">
+                <button class="btn" type="submit">Delete</button>
+            </form>
+          </li>
+          {% endfor %}
+        </ul>
+    {% endif %}</br>
 
 
     <a href="/">Return Home</a>
