@@ -46,8 +46,26 @@
         return $clients;
       }
       static function deleteAll()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM clients;");
-        }
+      {
+          $GLOBALS['DB']->exec("DELETE FROM clients;");
+      }
+      static function find($search_id)
+      {
+          $found_client = null;
+          $clients = Client::getAll();
+          foreach($clients as $client){
+              // $name= $client->getName();
+              $id= $client->getId();
+              // $stylist_id = $client->getStylistId();
+              if($id == $search_id){
+                  $found_client = $client;
+              }
+          }
+          return $found_client;
+      }
+      function delete()
+      {
+          $GLOBALS['DB']->exec("DELETE FROM clients WHERE id={$this->getId()};");
+      }
     }
  ?>
