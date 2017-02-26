@@ -23,9 +23,10 @@
           {% for client in clients %}
           <li>{{ client.getName }}
             <form class="solo-btn" action="/stylist/{{stylist.getId}}" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <input type="hidden" name="client_id" value="{{client.getId}}">
-                <button class="btn" type="submit">Delete</button>
+              <input type="hidden" name="_method" value="delete">
+              <input type="hidden" name="client_id" value="{{client.getId}}">
+              <button class="btn btn-danger" type="submit">Delete</button>
+              <a class="btn btn-warning" href="/client/{{client.getId}}/edit">Edit</a>
             </form>
           </li>
           {% endfor %}
