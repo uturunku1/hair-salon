@@ -75,8 +75,9 @@ This lab is about experimenting with PHP and installing the silex and Twig frame
 |Stylist selected|Selects the name of a stylist |takes to a new page where owner can add names of his clients.|
 |Client added|owner inputs name of the client in the form|a list show the name of the clients being added.|
 |Name of stylist is edited|owner edits the stylist information |new name is assigned to stylist.|
-|Stylist list is deleted|owner clicks delete all button to start from scratch|the list of stylists disappears.|
+|Stylist is deleted|owner clicks delete button to remove a stylist from the list|the list does not show the stylist who was deleted neither his clients.|
 |a client is removed from list|owner clicks on the delete button next to the client|the list shows all the clients minus the one who was removed.|
+|name of the client is edited|owner clicks on the edit button next to the client|new name is assigned to the client.|
 
 
 * End specifications
